@@ -1,10 +1,11 @@
 {
-  "name": "sqsmorph-mvp",
-  "version": "0.1.0",
+  "name": "sqs-morph-product-runtime",
+  "version": "0.2.0",
   "private": true,
-  "description": "SQS Morph MVP — design skins for native Squarespace 7.1 structured components",
+  "description": "Token-loaded Squarespace Product Grid design runtime",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "check": "node --check dist/sqsmorph.js"
+    "test": "node scripts/selftest.mjs",
+    "check": "node --check src/app.js && node --check modules/product-grid.js"
   }
 }

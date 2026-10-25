@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "site": "demo",
+  "features": [
+    {
+      "type": "product-grid",
+      "enabled": true,
+      "preset": "bento-featured",
+      "match": {"paths": ["*"]},
+      "target": {"mode": "all"},
+      "options": {
+        "gap": 22,
+        "radius": 20,
+        "metaPadding": 18,
+        "imageRatio": "4/5"
+      }
+    }
+  ]
+}

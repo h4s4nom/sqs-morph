@@ -4,42 +4,32 @@
   "outputDirectory": "dist",
   "headers": [
     {
-      "source": "/sqsmorph.bundle.js",
+      "source": "/app.js",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
+        {"key": "Cache-Control", "value": "public, max-age=300, must-revalidate"},
+        {"key": "Access-Control-Allow-Origin", "value": "*"},
+        {"key": "X-Content-Type-Options", "value": "nosniff"}
       ]
     },
     {
-      "source": "/sqsmorph.js",
+      "source": "/modules/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
+        {"key": "Cache-Control", "value": "public, max-age=300, must-revalidate"},
+        {"key": "Access-Control-Allow-Origin", "value": "*"}
       ]
     },
     {
-      "source": "/sqsmorph.css",
+      "source": "/styles/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
+        {"key": "Cache-Control", "value": "public, max-age=300, must-revalidate"},
+        {"key": "Access-Control-Allow-Origin", "value": "*"}
+      ]
+    },
+    {
+      "source": "/config/(.*)",
+      "headers": [
+        {"key": "Cache-Control", "value": "no-store"},
+        {"key": "Access-Control-Allow-Origin", "value": "*"}
       ]
     }
   ]

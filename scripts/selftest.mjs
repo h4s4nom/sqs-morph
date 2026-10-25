@@ -1,31 +1,18 @@
 import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const js = fs.readFileSync(path.join(root,'dist/sqsmorph.js'),'utf8');
-const css = fs.readFileSync(path.join(root,'dist/sqsmorph.css'),'utf8');
 const required = [
-  'data-sqsp-section="product-list"',
-  'data-sqsp-section="product-detail"',
-  'data-sqsp-block="summary"',
-  'data-sqsp-section="auto-layout"',
-  'product-editorial',
-  'detail-sticky',
-  'summary-cards',
-  'team-hover',
-  'testimonial-luxe',
-  'SQSMorph'
+  'src/app.js',
+  'modules/product-grid.js',
+  'styles/product-grid.css',
+  'config/sm_demo_product_v02.json',
+  'vercel.json'
 ];
-const missing = required.filter((x) => !js.includes(x) && !css.includes(x));
-if (missing.length) {
-  console.error('Missing required artifacts:', missing);
-  process.exit(1);
+for (const file of required) {
+  if (!fs.existsSync(new URL('../' + file, import.meta.url))) throw new Error('Missing ' + file);
 }
-const cssBalance = (css.match(/{/g)||[]).length - (css.match(/}/g)||[]).length;
-if (cssBalance !== 0) {
-  console.error('CSS brace imbalance:', cssBalance);
-  process.exit(1);
+const css = fs.readFileSync(new URL('../styles/product-grid.css', import.meta.url), 'utf8');
+for (const preset of ['bento-featured','editorial-overlay','split-catalog']) {
+  if (!css.includes(`data-sqm-product="${preset}"`)) throw new Error('Missing CSS preset ' + preset);
 }
-console.log('SQS Morph self-test passed.');
-console.log('JS bytes:', Buffer.byteLength(js));
-console.log('CSS bytes:', Buffer.byteLength(css));
+const config = JSON.parse(fs.readFileSync(new URL('../config/sm_demo_product_v02.json', import.meta.url), 'utf8'));
+if (config.features[0].type !== 'product-grid') throw new Error('Bad demo config');
+console.log('Self-test passed.');

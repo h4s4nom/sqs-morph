@@ -72,8 +72,14 @@ function applyOptions(section, options = {}) {
 }
 
 function decorate(section) {
-  Array.from(section.querySelectorAll(ITEM_SELECTOR)).forEach((item, index) => {
+  const items = Array.from(section.querySelectorAll(ITEM_SELECTOR));
+  const count = items.length;
+  const density = count <= 1 ? 'single' : count === 2 ? 'duo' : count === 3 ? 'trio' : 'bento';
+  section.setAttribute('data-sqm-count', String(count));
+  section.setAttribute('data-sqm-density', density);
+  items.forEach((item, index) => {
     item.setAttribute('data-sqm-product-index', String(index + 1));
+    item.setAttribute('data-sqm-product-label', String(index + 1).padStart(2, '0'));
   });
 }
 

@@ -26,4 +26,4 @@ copyDir(path.join(root, 'styles'), path.join(dist, 'styles'));
 copyDir(path.join(root, 'config'), path.join(dist, 'config'));
 copy(path.join(root, 'test/index.html'), path.join(dist, 'index.html'));
 copy(path.join(root, 'test/fixture.html'), path.join(dist, 'fixture.html'));
-console.log('Built SQS Morph Product Runtime v0.2.1 → dist/');
+console.log('Built SQS Morph Product Runtime v0.2.2 → dist/');

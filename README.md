@@ -1,4 +1,4 @@
-# SQS Morph Product Runtime v0.2.1
+# SQS Morph Product Runtime v0.2.2
 
 A deliberately narrow, production-minded rewrite focused on **Squarespace 7.1 Product List sections**.
 

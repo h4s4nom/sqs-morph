@@ -1,0 +1,10 @@
+{
+  "name": "sqsmorph-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SQS Morph MVP — design skins for native Squarespace 7.1 structured components",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node --check dist/sqsmorph.js"
+  }
+}
